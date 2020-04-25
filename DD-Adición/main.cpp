@@ -11,6 +11,9 @@
 
 int main ()
 {
+	
+	// Usamos el estilo de declarar las variables al principio
+	
 	int numero1, numero2, resultado;
 
 	std::cout << "Ingrese el primer número: ";
