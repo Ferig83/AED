@@ -24,8 +24,15 @@ máquina reconoce y puede operar como número. Si nos fijamos en una tabla de c�
 con restarle el número 48 a cada caracter se lo convertirá en número, y sumándole 48 pasaríamos de 
 número a caracter.
 
-Es importante aclarar que no pretendo (y de hecho sería bastante desacertado) decir que reproduje la misma 
-funcionalidad del std::cin y el std::cout  en assembler, pero trataremos de acercarnos lo más que podamos.
+Sin embargo vemos que en el código en C++ no se necesitó en ningún momento que hagamos esta conversión. El 
+"std::cin" hizo esta conversión por nosotros o detectó el tipo de dato?  Es posible que internamente se esté
+haciendo uso de "templates" donde para cada tipo de dato tendremos diferentes métodos en cout que indiquen
+cómo comportarse en cada caso. Nuestro código fallará si hubiesemos declarado la variable numero1 como "char\[\]" 
+por lo que bajo esta evidencia podríamos deducir que no se hacen conversiones de datos.
+
+
+NOTA: Es importante aclarar que no pretendo (y de hecho sería bastante desacertado) decir que reproduje la misma 
+funcionalidad del std::cin y el std::cout  en assembler, pero trataremos de acercarnos lo más que podamos).
 
 
 
