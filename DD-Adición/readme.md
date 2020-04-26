@@ -1,5 +1,28 @@
 # Adición
 
+## Etapa \#1
+
+* Analisis del problema
+
+Nuestro objetivo es sumar dos números enteros. Segun el diagrama de IPO, para su procesamiento debemos tener
+espacio y tiempo. 
+
+COLOCAR DIAGRAMA
+
+Como se tratará de una operación sencilla, no se discutirá el tema del tiempo pero sí lo
+haremos con el espacio: nuestro procesador nos obliga a colocar en memoria todo lo que se procesa (incluyendo
+los mensajes que luego irán a la salida).
+
+Para los mensajes de salida que usaremos en esta aplicación, en C++ no necesitaremos declarar variables (más allá de que internamente sí hay un almacenamiento en memoria de todas las cadenas). Sin embargo, sí debemos reservar espacio
+para los números:
+
+Paso 1: Reservar "numero1", "numero2", "resultado" de tipo entero (BCD , 32 bits)
+
+FALTA TERMINAR
+
+
+
+## Versión en NASM
 
 En este trabajo práctico se incluye el código en C++ de un algoritmo simple en donde se suman 
 dos valores. En la carpeta ASM incluyo el código que contiene la versión en lenguaje ensamblador
