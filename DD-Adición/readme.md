@@ -1,25 +1,60 @@
 # Adición
 
-## Etapa \#1
+### Etapa \#1
 
-* Analisis del problema
+
+
+*  **Analisis del problema**
 
 Nuestro objetivo es sumar dos números enteros. Segun el diagrama de IPO, para su procesamiento debemos tener
-espacio y tiempo. 
+espacio y tiempo: 
 
 COLOCAR DIAGRAMA
 
-Como se tratará de una operación sencilla, no se discutirá el tema del tiempo pero sí lo
-haremos con el espacio: nuestro procesador nos obliga a colocar en memoria todo lo que se procesa (incluyendo
-los mensajes que luego irán a la salida).
+Como se tratará de una operación sencilla (sumar dos números sin más), no se discutirá el tema del tiempo pero sí lo
+haremos con el espacio: **nuestro procesador nos obliga a colocar en memoria todo lo que se procesa, incluyendo
+los mensajes (cadenas) que luego irán a la salida.**
 
-Para los mensajes de salida que usaremos en esta aplicación, en C++ no necesitaremos declarar variables (más allá de que internamente sí hay un almacenamiento en memoria de todas las cadenas). Sin embargo, sí debemos reservar espacio
-para los números:
+En el caso de C++, con std::out no necesitaremos declarar variables ni ordenar explicitamente que se almacenen los mensajes que vamos a imprimir (más allá de que internamente sí hay un almacenamiento en memoria de todas las cadenas que imprimimos). Sin embargo, sí debemos reservar espacio para los números. 
 
-Paso 1: Reservar "numero1", "numero2", "resultado" de tipo entero (BCD , 32 bits)
+*Paso 1: Reservar los espacios bajo los nombres "numero1", "numero2" y "resultado", todos de tipo entero*
 
-FALTA TERMINAR
+Luego necesitamos pedir que se rellenen los espacios de "numero1" y "numero2", ya que estos son los números que
+vamos a sumar
 
+*Paso 2 (**INPUT**): Pedirle al usuario que ingrese los valores para "numero1" y "numero2"*
+
+Una vez hecho esto, entramos en la fase de procesamiento del sistema **IPO**: Procesamos los dos valores, sumándo ambos
+y colocando el resultado en el espacio "resultado" (puede usarse una de las variables para guardar el resultado pero
+preferimos usar una tercera para explicar mejor el algoritmo).
+
+*Paso 3 (**PROCESAMIENTO**):  Sumamos "numero1" y "numero2" y volcamos el resultado en el espacio "resultado"
+
+Ahora debemos mostrar el resultado, lo que indica que estamos en la fase de output del sistema **IPO**.
+
+*Paso 4 (**OUTPUT**):  Mostramos lo guardado en "resultado" en pantalla.
+
+
+El algoritmo completo sería el siguiente
+
+*Inicio
+   "numero1","numero2","resultado" del tipo entero 
+    mostrar "Ingrese el primer número"
+    leer "numero1"
+    mostrar "Ingrese el segundo número"
+    leer "numero2"
+    resultado = numero1 + numero2
+    mostrar "El resultado es: ", resultado
+Fin*
+
+
+No estamos verificando si lo que ingresó fueron letras (en el código propuesto en assembler si se hace, tomando
+como nulas los valores donde se ingresen caracteres no numéricos) y además la suma puede hacerse diferente (pedir que se ingrese la cadena entera), pero para simplificar el código se realizó de esa manera.
+
+Veamos como sería el diagrama de flujo:
+
+
+![Diagrama](/diagrama.png)
 
 
 ## Versión en NASM
