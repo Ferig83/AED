@@ -22,17 +22,17 @@ En el caso de C++, con std::out no necesitaremos declarar variables ni ordenar e
 Luego necesitamos pedir que se rellenen los espacios de "numero1" y "numero2", ya que estos son los números que
 vamos a sumar
 
-*Paso 2 (**INPUT**): Pedirle al usuario que ingrese los valores para "numero1" y "numero2"*
+*Paso 2 (INPUT): Pedirle al usuario que ingrese los valores para "numero1" y "numero2"*
 
 Una vez hecho esto, entramos en la fase de procesamiento del sistema **IPO**: Procesamos los dos valores, sumándo ambos
 y colocando el resultado en el espacio "resultado" (puede usarse una de las variables para guardar el resultado pero
 preferimos usar una tercera para explicar mejor el algoritmo).
 
-*Paso 3 (**PROCESAMIENTO**):  Sumamos "numero1" y "numero2" y volcamos el resultado en el espacio "resultado"
+*Paso 3 (PROCESAMIENTO):  Sumamos "numero1" y "numero2" y volcamos el resultado en el espacio "resultado"
 
 Ahora debemos mostrar el resultado, lo que indica que estamos en la fase de output del sistema **IPO**.
 
-*Paso 4 (**OUTPUT**):  Mostramos lo guardado en "resultado" en pantalla.
+*Paso 4 (OUTPUT):  Mostramos lo guardado en "resultado" en pantalla.
 
 
 El algoritmo completo sería el siguiente
