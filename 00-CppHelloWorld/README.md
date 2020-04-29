@@ -1,5 +1,5 @@
 # Hola, Mundo!  
-## (pero más difícil)
+## (relación C++ con ASM)
 
 En este documento voy a explicar cada detalle que pueda del "Hola, Mundo!". Como ya tengo algo de experiencia usando C++ y me 
 apasionan muchísimo los lenguajes ensambladores, me es de mucho interés aprovechar esta cursada para analizar cómo 
