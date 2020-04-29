@@ -27,14 +27,13 @@ El algoritmo completo sería el siguiente
 
 *Inicio \
    "numero1","numero2","resultado" del tipo entero  \
-    mostrar "Ingrese el primer número" \ 
+    mostrar "Ingrese el primer número" \
     leer "numero1" \
     mostrar "Ingrese el segundo número" \
     leer "numero2" \
     resultado = numero1 + numero2 \
     mostrar "El resultado es: ", resultado \
 Fin* \
-
 
 No estamos verificando si lo que ingresó fueron letras (en el código propuesto en assembler si se hace, tomando
 como nulas los valores donde se ingresen caracteres no numéricos) y además la suma puede hacerse diferente (pedir que se ingrese la cadena entera), pero para simplificar el código se realizó de esa manera.
