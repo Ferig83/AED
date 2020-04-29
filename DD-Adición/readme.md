@@ -6,14 +6,7 @@
 
 *  **Analisis del problema**
 
-Nuestro objetivo es sumar dos números enteros. Segun el diagrama de IPO, para su procesamiento debemos tener
-espacio y tiempo: 
-
-COLOCAR DIAGRAMA
-
-Como se tratará de una operación sencilla (sumar dos números sin más), no se discutirá el tema del tiempo pero sí lo
-haremos con el espacio: **nuestro procesador nos obliga a colocar en memoria todo lo que se procesa, incluyendo
-los mensajes (cadenas) que luego irán a la salida.**
+Nuestro objetivo es sumar dos números enteros. Según el módelo de IPO (datos de entrada que se procesan para obtener resultados como salida), para su procesamiento debemos tener espacio y tiempo. Como se tratará de una operación sencilla (sumar dos números sin más), no se discutirá el tema del tiempo pero sí lo haremos con el espacio: **nuestro procesador nos obliga a colocar en memoria todo lo que se procesa, incluyendo los mensajes (cadenas) que luego irán a la salida.**
 
 En el caso de C++, con std::out no necesitaremos declarar variables ni ordenar explicitamente que se almacenen los mensajes que vamos a imprimir (más allá de que internamente sí hay un almacenamiento en memoria de todas las cadenas que imprimimos). Sin embargo, sí debemos reservar espacio para los números. 
 
@@ -37,15 +30,15 @@ Ahora debemos mostrar el resultado, lo que indica que estamos en la fase de outp
 
 El algoritmo completo sería el siguiente
 
-*Inicio
-   "numero1","numero2","resultado" del tipo entero 
-    mostrar "Ingrese el primer número"
-    leer "numero1"
-    mostrar "Ingrese el segundo número"
-    leer "numero2"
-    resultado = numero1 + numero2
-    mostrar "El resultado es: ", resultado
-Fin*
+*Inicio \
+   "numero1","numero2","resultado" del tipo entero  \
+    mostrar "Ingrese el primer número" \ 
+    leer "numero1" \
+    mostrar "Ingrese el segundo número" \
+    leer "numero2" \
+    resultado = numero1 + numero2 \
+    mostrar "El resultado es: ", resultado \
+Fin* \
 
 
 No estamos verificando si lo que ingresó fueron letras (en el código propuesto en assembler si se hace, tomando
