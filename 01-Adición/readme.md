@@ -41,7 +41,7 @@ como nulas los valores donde se ingresen caracteres no numéricos) y además la 
 Veamos como sería el diagrama de flujo:
 
 
-![Diagrama](https://github.com/Ferig83/AED/blob/master/DD-Adici%C3%B3n/diagrama.png)
+![Diagrama](https://github.com/Ferig83/AED/blob/master/01-Adici%C3%B3n/diagrama.png)
 
 
 ## Versión en NASM
