@@ -1,10 +1,5 @@
 # Adición
 
-### Etapa \#1
-
-
-
-*  **Analisis del problema**
 
 Nuestro objetivo es sumar dos números enteros. Según el módelo de IPO (datos de entrada que se procesan para obtener resultados como salida), para su procesamiento debemos tener espacio y tiempo. Como se tratará de una operación sencilla (sumar dos números sin más), no se discutirá el tema del tiempo pero sí lo haremos con el espacio: **nuestro procesador nos obliga a colocar en memoria todo lo que se procesa, incluyendo los mensajes (cadenas) que luego irán a la salida.**
 
