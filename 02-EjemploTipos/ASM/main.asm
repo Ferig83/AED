@@ -1,9 +1,16 @@
-%define NUMERO_FLOAT -1446.19828
+; compilar con  :  nasm -felf64 main.asm
+;		   ld main.o -o play
+;		   
+; ejecutar  con ./play
+
+
+
+%define NUMERO_FLOAT -1446.1982
 
 
 %include 'matlib.asm'
 
-;-----------------------------
+;----------------------------------------
 
 global _start
 
