@@ -2,7 +2,7 @@
 
 ---
 
-### Etapa 2: Análisis del problema
+### Análisis del problema
 
 #### Enunciado
  Escribir un programa que ejemplifique el uso de los tipos de datos basicos de C++ vistos en clase:
@@ -21,7 +21,7 @@ compilarlo y chequear si el assert no provoca salidas (y si las provoca, analiza
 
 
 ---
-### Etapa 3: Solución
+### Solución
 
 Escribí como ejemplo un código que cumple con estas características, como si se estuviese analizando un experimento de biología.
 El programa se ejecuta sin ninguna entrada y no tendrá salida alguna excepto que se modifiquen a propósito las constantes en el 
