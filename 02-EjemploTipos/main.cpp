@@ -2,6 +2,8 @@
 *
 *  Trabajo Práctico N° 3 
 *
+*  Ejemplo de Tipos de Datos
+*
 *  "La reproducción del Uteneanus Algoritmicus"  
 *
 *  Por Fernando Riganti (156.149-0)
@@ -48,11 +50,16 @@ int main()
 		const bool especimen1_adulto = true;
 		const bool especimen2_adulto = true;
 
-		// Sexo de los especímenes (usar mayúsculas! M: Macho, H: Hembra)
+		// Sexo de los especímenes (M: Macho, H: Hembra)
 
-		const char especimen1_sexo = 'M';
-		const char especimen2_sexo = 'H';
-
+		char especimen1_sexo = 'M';
+		char especimen2_sexo = 'H';
+		
+		// Conversión a mayúsculas (demuestro además que podemos sumar en char
+	
+		if ((especimen1_sexo == 'm') or (especimen1_sexo == 'h')) especimen1_sexo -= 32;
+		if ((especimen2_sexo == 'm') or (especimen2_sexo == 'h')) especimen2_sexo -= 32;
+		
 		// Notas de los alumnos:
 
 		const unsigned int nota1 = 6;
