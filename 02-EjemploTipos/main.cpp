@@ -104,7 +104,7 @@ int main()
 
 	// Chequeo si el promedio de los alumnos es igual o mayor a seis:
 
-	promedio = (nota1 + nota2 + nota3 + nota4) / 4; 
+	promedio = (nota1 + nota2 + nota3 + nota4) / 4.0; 
 
 	assert (promedio >= 6.0);
 	 
