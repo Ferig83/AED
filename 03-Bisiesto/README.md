@@ -19,13 +19,28 @@ La definición de un año bisiesto es que sea divisible por 4. Además no debe s
 ---
 ### Solución
 
-Sea x un número natural mayor a 1582 y sea:
+Sea "year" un número natural mayor a 1582 y sea:
     
-    p(x) :  x % 4 = 0
-    q(x) :  x % 100 = 0
-    r(x) :  x % 400 = 0
+    p(year) :  year % 4 = 0
+    q(year) :  year % 100 = 0
+    r(year) :  year % 400 = 0
+    
+Siendo "%" la operación que devuelve el resto de dividir el primer operando por el segundo (división entera).
 
 Se desarrolló una función que retorna el valor booleano resultante del siguiente árbol de operaciones:
 
 
 ![Arbol](https://github.com/Ferig83/AED/blob/master/03-Bisiesto/tp3ayed.png)
+
+
+Esto implica que la expresión de retorno será :
+
+  p AND ((q AND r) OR NOT(q))
+  
+  Es decir, será:
+  
+  (year % 4 = 0) AND ((year % 100 = 0 AND year % 400 = 0) OR ¬(year % 100 = 0))
+  
+  Se comprueban con varios años utilizando la función ASSERT, dando resultados satisfactorios.  
+
+
