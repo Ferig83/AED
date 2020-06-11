@@ -28,3 +28,4 @@ Sea x un número natural mayor a 1582 y sea:
 Se desarrolló una función que retorna el valor booleano resultante del siguiente árbol de operaciones:
 
 
+![Arbol](https://github.com/Ferig83/AED/blob/master/03-Bisiesto/tp3ayed.png)
