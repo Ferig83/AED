@@ -46,3 +46,11 @@ Esto implica que la expresión de retorno será :
   Se comprueban con varios años utilizando la función ASSERT, dando resultados satisfactorios.  
 
 
+### Extra
+
+La versión en ASM hace lo mismo, solo que nuestros asserts no señalan en qué comparación tenemos el error. 
+Podríamos implementarlo salvando un argumento como cadena pero a fines prácticos lo mejor sería poner un identificador.
+De momento, me centro en el uso de las operaciones booleanas (y lo útil que es el arbol de operaciones cuando
+nos vamos al bajo nivel!).
+
+
