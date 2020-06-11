@@ -25,9 +25,11 @@ Sea "year" un número natural mayor a 1582 y sea:
     q(year) :  year % 100 = 0
     r(year) :  year % 400 = 0
     
-Siendo "%" la operación que devuelve el resto de dividir el primer operando por el segundo (división entera).
+Siendo "%" la operación que devuelve el resto de dividir el primer operando por el segundo (división entera), y sea:
 
-Se desarrolló una función que retorna el valor booleano resultante del siguiente árbol de operaciones:
+IsBisiesto(year): Naturales -> Booleanos  
+
+Se desarrolló la función "IsBisiesto" que retorna el valor booleano resultante del siguiente árbol de operaciones:
 
 
 ![Arbol](https://github.com/Ferig83/AED/blob/master/03-Bisiesto/tp3ayed.png)
