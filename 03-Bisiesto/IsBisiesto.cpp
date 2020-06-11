@@ -14,7 +14,7 @@
 #include <cassert>
 
 
-bool IsBisiesto(int year);
+bool IsBisiesto(unsigned year);
 
 
 int main ()
@@ -27,7 +27,7 @@ int main ()
 	assert(IsBisiesto(1900) == false);
 }
 
-bool IsBisiesto(int year)
+bool IsBisiesto(unsigned year)
 {
 	return year % 4 == 0 and ((year % 100 == 0 and year % 400 == 0) or !(year % 100 == 0));   
 }
