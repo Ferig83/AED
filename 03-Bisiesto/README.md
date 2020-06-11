@@ -27,7 +27,7 @@ Sea "year" un número natural mayor a 1582 y sea:
     
 Siendo "%" la operación que devuelve el resto de dividir el primer operando por el segundo (división entera), y sea:
 
-IsBisiesto(year): \mathbb{N} -> \mathbb{B}  
+IsBisiesto(year): Naturales -> Booleanos  
 
 Se desarrolló la función "IsBisiesto" que retorna el valor booleano resultante del siguiente árbol de operaciones:
 
