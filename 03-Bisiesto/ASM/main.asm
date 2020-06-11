@@ -27,30 +27,30 @@ _start:
   
   ;Probamos cada añito. 
   
-	mov rax, YEAR1   
+	mov rcx, YEAR1   
 	call _IsBisiesto                
 	call _pseudo_assert_true
 
-	mov rax, YEAR2
+	mov rcx, YEAR2
 	call _IsBisiesto
 	call _pseudo_assert_true
 
 	
-	mov rax, YEAR3
+	mov rcx, YEAR3
 	call _IsBisiesto
 	call _pseudo_assert_false
 
 
-	mov rax, YEAR4
+	mov rcx, YEAR4
 	call _IsBisiesto
 	call _pseudo_assert_true
 
 
-	mov rax, YEAR5
+	mov rcx, YEAR5
 	call _IsBisiesto
 	call _pseudo_assert_true
 
-	mov rax, YEAR6
+	mov rcx, YEAR6
 	call _IsBisiesto
 	call _pseudo_assert_false
 
@@ -80,6 +80,10 @@ _pseudo_assert_true:
 	mov rsi, error_assert
 	mov rdx, 8
 	syscall
+	
+	mov rax, 60
+	mov rdi, -1
+	syscall
 
 .todo_ok:
 
@@ -98,6 +102,11 @@ _pseudo_assert_false:
 	mov rsi, error_assert
 	mov rdx, 8
 	syscall
+	
+	mov rax, 60
+	mov rdi, -1
+	syscall
+	
 
 .todo_ok:
 	ret
@@ -112,6 +121,7 @@ _IsBisiesto:
 ;_______Empezamos por "p". Movemos el valor a RAX y lo dividimos por 4 
 ;	(limpiamos RDX ya que, si está limpio, ahí se guardará el resto)
 
+	mov rax, rcx
 	xor rdx, rdx
 	mov rbx, 4
 	div rbx
@@ -125,6 +135,7 @@ _IsBisiesto:
 
 ;______Ahora vamos a hacer lo mismo con "q". Vamos a colocarlo en r9b
 
+	mov rax, rcx
 	xor rdx, rdx
 	mov rbx, 100
 	div rbx
