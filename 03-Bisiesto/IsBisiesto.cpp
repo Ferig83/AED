@@ -8,7 +8,7 @@
 *******************************************/
 
 
-// Atención! Asumimos que se ingresan años superiores a 1852, no negativos. Años anteriores a
+// Atención! Asumimos que se ingresan años superiores a 1582, no negativos. Años anteriores a
 // 1852 no son ni bisiestos ni no bisiestos.
 
 #include <cassert>
