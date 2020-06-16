@@ -15,6 +15,7 @@ global _start
 section .data
 
         error_assert db 'ERROR!', 10, 0
+	error_menor db 'MENOR a 1582',10,0   ; No me haga incluir esta cadena como variable local, se lo pido por favor
 	
 section .text
 
@@ -118,7 +119,13 @@ _pseudo_assert_false:
 
 _IsBisiesto:
 
-;_______Empezamos por "p". Movemos el valor a RAX y lo dividimos por 4 
+;_______Primero verificamos que el año enté dentro del dominio. 
+
+	cmp rcx, 1582
+	jb .error_menor_1582
+	
+
+;_______Ahora empezamos por "p". Movemos el valor a RAX y lo dividimos por 4 
 ;	(limpiamos RDX ya que, si está limpio, ahí se guardará el resto)
 
 	mov rax, rcx
@@ -166,3 +173,20 @@ _IsBisiesto:
 ;_______Listo, nuestro trabajo aquí ha terminado
 
 	ret
+
+
+
+;_______Excepción de año menor a 1582 (me niego a dar respuestas binarias! arrgg!)
+
+.error_menor_1582:
+
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, error_menor
+	mov rdx, 14
+	syscall
+	
+	mov rax, 60
+	mov rdi, -1
+	syscall		; nos bimo en Erroenlandia
+	
