@@ -42,7 +42,7 @@ Aclaración: Se refiere como entrada al parámetro de la función IsBisiesto y s
 Se desarrolló la función "IsBisiesto" que retorna el valor booleano resultante del siguiente árbol de operaciones:
 
 
-![Arbol](https://github.com/Ferig83/AED/blob/master/03-Bisiesto/tp3ayed.png)
+![Arbol](https://github.com/Ferig83/AED/blob/master/03-Bisiesto/tp3ayed_corregido.png)
 
 
 Esto implica que la expresión de retorno será :
