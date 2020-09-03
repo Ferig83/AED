@@ -17,7 +17,10 @@ Debemos representar a los polígonos y triángulos como un conjunto de vértices
 Como operaciones vamos a definir las siguientes:
 
 
-Sea __vértice__ un par ordenado en __R^2__, __polígono__ un conjunto finito de vértices, __índice__ la posición del vértice, siendo 0 el primero y cantidad total - 1 el último y sea __color__ el conjunto de 3 bytes que representan el rojo, verde y azul (en ese orden). Se definen las siguientes funciones:
+Sea __vértice__ un par ordenado en __R^2__, __polígono__ un conjunto finito de vértices, __triangulo__ un polígono de tres vértices, __índice__ la posición del vértice, siendo 0 el primero y cantidad total - 1 el último y sea __color__ el conjunto de 3 bytes que representan el rojo, verde y azul (en ese orden). Se definen las siguientes funciones:
+
+
+Donde dice "polígono" se puede usar "triángulo" excepto cuando se indica con un asterisco (poligono*)
 
 
 - __Inicializar_Figura__:  vértices --> polígono
@@ -56,11 +59,11 @@ Devuelve el color de un polígono
 
 Cambia el color de un polígono
 
-- __AgregarVerticeAlFinal__: polígono x vértice --> polígono
+- __AgregarVerticeAlFinal__: polígono* x vértice --> polígono*
 
 Agrega un vértice al final del polígono (recordar que el orden es importante para el cálculo de ángulos)
 
-- __BorrarUltimoVertice__: polígono --> polígono
+- __BorrarUltimoVertice__: polígono* --> polígono*
 
 Borra el último vértice de un polígono
 
@@ -82,21 +85,21 @@ Como se pide que __triángulo__ y __polígono__ sean dos tipos de dato diferente
 
 * template <typename T, typename G> T Inicializar_Figura(G &vertices)
 
-- ENTRADA: Un array de __Vertice__ que representan el polígono
-- PROCESAMIENTO: Mueve los vértices a la estructura de salida, así también como su cantidad
-- SALIDA: Una estructura del tipo __Poligono__ ó __Triangulo__
+  - ENTRADA: Un array de __Vertice__ que representan el polígono
+  - PROCESAMIENTO: Mueve los vértices a la estructura de salida, así también como su cantidad
+  - SALIDA: Una estructura del tipo __Poligono__ ó __Triangulo__
 
 * template <typename T> void Mostrar_Todos_Los_Vertices(const T &t)
 
- - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__
- - PROCESAMIENTO: Itera los vértices de la estructura de entrada mediante un ciclo FOR e imprime los valores utilizando std::cout
- - SALIDA: La impresión en pantalla de los valores (la función en sí misma no devuelve datos de retorno)
+  - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__
+  - PROCESAMIENTO: Itera los vértices de la estructura de entrada mediante un ciclo FOR e imprime los valores utilizando std::cout
+  - SALIDA: La impresión en pantalla de los valores (la función en sí misma no devuelve datos de retorno)
 
 * template <typename T> Vertice getVertice(const T &t, int n)
  
- - ENTRADA Una estructura del tipo __Poligono__ ó __Triangulo__ , junto con un número natural que representa el índice
- - PROCESAMIENTO: Simplemente retorna el vértice en el índice indicado 
- - SALIDA: Devuelve el vértice en el índice indicado
+  - ENTRADA Una estructura del tipo __Poligono__ ó __Triangulo__ , junto con un número natural que representa el índice
+  - PROCESAMIENTO: Simplemente retorna el vértice en el índice indicado 
+  - SALIDA: Devuelve el vértice en el índice indicado
  
 * template <typename T> double getPerimetro(const T &t)
  
@@ -112,49 +115,49 @@ Como se pide que __triángulo__ y __polígono__ sean dos tipos de dato diferente
  
 * template <typename T> double getDistancia(const T &t, int i, int j)
 
-- ENTRADA : Una estructura del tipo __Poligono__ ó __Triangulo__ , y dos ínidices naturales
-- PROCESAMIENTO: De manera similar al cálculo de longitud, se calcula la distancia entre dos vértices.
-- SALIDA: Numero real con la distancia calculada.
+  - ENTRADA : Una estructura del tipo __Poligono__ ó __Triangulo__ , y dos ínidices naturales
+  - PROCESAMIENTO: De manera similar al cálculo de longitud, se calcula la distancia entre dos vértices.
+  - SALIDA: Numero real con la distancia calculada.
  
 * template <typename T> double getAngulo(const T &t, int i)
 
-- ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__ y un indice natural
-- PROCESAMIENTO: Se realiza el teorema del coseno para calcular el ángulo del vértice indicado. Si el vértice está en un extremo, se calcula como si el polígono fuese cerrado.
-- SALIDA: Un número real representando en radianes el valor del ángulo
+  - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__ y un indice natural
+  - PROCESAMIENTO: Se realiza el teorema del coseno para calcular el ángulo del vértice indicado. Si el vértice está en un extremo, se calcula como si el polígono fuese cerrado.
+  - SALIDA: Un número real representando en radianes el valor del ángulo
 
 
 * template <typename T> ColorRGB getColor(const T &t)
  
- - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__
- - PROCESAMIENTO: Simplemente retorna el color del polígono o triángulo
- - SALIDA: El color del polígono o triángulo como estructura _ColorRGB_
+   - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__
+   - PROCESAMIENTO: Simplemente retorna el color del polígono o triángulo
+   - SALIDA: El color del polígono o triángulo como estructura _ColorRGB_
  
 * template <typename T> void setColor(T &t, ColorRGB color);
 
- - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__ y una estructura del tipo ColorRGB
- - PROCESAMIENTO: Cambia el color del polígono o triángulo
- - SALIDA: ninguna
+   - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__ y una estructura del tipo ColorRGB
+   - PROCESAMIENTO: Cambia el color del polígono o triángulo
+   - SALIDA: ninguna
  
 * void AgregarVerticeAlFinal(Poligono &t, Vertice vertice);
 
- - ENTRADA: Una estructura del tipo __Poligono__ y una estructura del tipo __Vertice__
- - PROCESAMIENTO: Agrega el vértice ingresado al final del polígono, corroborando que no pase el techo de cantidades máximas de vértices permitidas
- - SALIDA: ninguna
+   - ENTRADA: Una estructura del tipo __Poligono__ y una estructura del tipo __Vertice__
+   - PROCESAMIENTO: Agrega el vértice ingresado al final del polígono, corroborando que no pase el techo de cantidades máximas de vértices permitidas
+   - SALIDA: ninguna
 
 
 * void BorrarUltimoVertice(Poligono &t);
 
 
- - ENTRADA: Una estructura del tipo __Poligono__ 
- - PROCESAMIENTO: Reduce en una unidad el indicador _cantidad_vertices_
- - SALIDA: ninguna
+   - ENTRADA: Una estructura del tipo __Poligono__ 
+   - PROCESAMIENTO: Reduce en una unidad el indicador _cantidad_vertices_
+   - SALIDA: ninguna
 
 
 * template <typename T> unsigned getCantidadVertices(const T &t);
 
- - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__ 
- - PROCESAMIENTO: Retorna la cantidad de vértices dada por _cantidad_vertices_
- - SALIDA: Un numero natural representando la cantidad de vértices
+   - ENTRADA: Una estructura del tipo __Poligono__ ó __Triangulo__ 
+   - PROCESAMIENTO: Retorna la cantidad de vértices dada por _cantidad_vertices_
+   - SALIDA: Un numero natural representando la cantidad de vértices
 
 
 
