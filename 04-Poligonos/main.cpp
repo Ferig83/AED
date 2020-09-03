@@ -1,8 +1,11 @@
-/****************************************
- 
-
-******************************************/
-
+/******************************************
+*
+*  Trabajo Práctico N° 4 - Polígonos y triángulos
+*
+*  por Fernando Gustavo Riganti (159.146-0)
+*
+*
+*******************************************/
 
 
 #include <iostream>
@@ -10,11 +13,8 @@
 #include <cmath>
 #include <cassert>
 
+
 #define VERTICES_MAXIMOS 20
-
-
-// BORRAR!!
-using namespace std;
 
 
 //--- ENUMERACIONES Y CONSTANTES ------------------------------------
@@ -40,16 +40,62 @@ struct Vertice {
 struct Triangulo{
 	ColorRGB color;
 	unsigned cantidad_vertices;
-	array<Vertice,3> vertices;	
+	std::array<Vertice,3> vertices;	
 };
 
 struct Poligono {
 	ColorRGB color;
 	unsigned cantidad_vertices;
-	array<Vertice,VERTICES_MAXIMOS> vertices;     
+	std::array<Vertice,VERTICES_MAXIMOS> vertices;     
 };
 
 
+//--- PROTOTIPOS DE FUNCIONES ---------------------------------------
+
+
+template <typename T, typename G> T Inicializar_Figura(G &vertices);
+template <typename T> void Mostrar_Todos_Los_Vertices(T &t);
+template <typename T> Vertice Mostrar_Vertice_En(T &t, int n);
+template <typename T> double getPerimetro(T &t);
+template <typename T> double getLongitud(T &t, int i, int fin);
+template <typename T> double getDistancia(T &t, int i, int j);
+template <typename T> double getAngulo(T &t, int i); 
+template <typename T> ColorRGB getColor(T &t);
+template <typename T> void setColor(T &t, ColorRGB color);
+template <typename T> void AgregarVerticeAlFinal(T &t, Vertice vertice);
+template <typename T> void BorrarUltimoVertice(T &t);
+template <typename T> int getCantidadVertices(T &t);
+
+
+
+//--- MAIN ---------------------------------------------------------
+
+
+int main()
+{
+	std::array<Vertice,5> vertices_pentagono = {0.4, 3.2,
+			 			    2.1, 1.4,
+			  			    1.2, 4.4,
+					 	    5.5, 6.6,
+					  	    4.2, 1.2};
+
+
+	std::array<Vertice,3> vertices_triangulo = {0.0, 1.0, 
+  						    1.0, 1.0,
+			   			    1.0, 0.0};
+				
+
+	Poligono pentagono = Inicializar_Figura<Poligono>(vertices_pentagono);
+	Triangulo triangulo = Inicializar_Figura<Triangulo>(vertices_triangulo);
+	
+
+	
+	Mostrar_Todos_Los_Vertices(triangulo);
+	
+	std::cout << std::endl << "Angulo: " << getAngulo(triangulo, 1);
+	
+	return 0;
+}
 
 
 
@@ -76,15 +122,15 @@ T Inicializar_Figura(G &vertices) {
 template <typename T> 
 void Mostrar_Todos_Los_Vertices(T &t) {
 	for (int i = 0; i < t.cantidad_vertices; ++i){ 
-		cout << "\n(" << t.vertices[i].x << " ; " << t.vertices[i].y << ")";
+		std::cout << "\n(" << t.vertices[i].x << " ; " << t.vertices[i].y << ")";
 	} 
 }
 
 
 template <typename T> 
 Vertice Mostrar_Vertice_En(T &t, int n) {
-	assert(t.cantidad_vertices < n);
-	return t.vertice[n-1];
+	assert(t.cantidad_vertices > n);
+	return t.vertice[n];
 }
 
 
@@ -92,30 +138,32 @@ template <typename T>
 double getPerimetro(T &t) {
 	double valor = 0;
 	for (int i = 0; i < (t.cantidad_vertices - 1); ++i){
-	 	valor = valor + ((t.vertice[i].x - t.vertice[i+1].x)^2 + (t.vertice[i].y - t.vertice[i+1].y)^2 )
+	 	valor = valor + sqrt(pow(t.vertice[i].x - t.vertice[i+1].x,2.0) + pow(t.vertice[i].y - t.vertice[i+1].y,2.0));
 	}
-	valor = valor + ((t.vertice[t.cantidad_vertices].x - t.vertice[0].x)^2 + (t.vertice[t.cantidad_vertices].y - t.vertice[0].y)^2 )
-	return sqrt(valor);
+	valor = valor + sqrt(pow(t.vertice[t.cantidad_vertices-1].x - t.vertice[0].x,2.0) + pow(t.vertice[t.cantidad_vertices-1].y - t.vertice[0].y,2.0));
+	return valor;
 }
 
 template <typename T> 
 double getLongitud(T &t, int i, int fin) {
 	double valor = 0;
 	for (; i < (fin - 1); ++i){
-	 	valor = valor + ((t.vertice[i].x - t.vertice[i+1].x)^2 + (t.vertice[i].y - t.vertice[i+1].y)^2 )
+	 	valor = valor + sqrt(pow(t.vertice[i].x - t.vertice[i+1].x,2.0) + pow(t.vertice[i].y - t.vertice[i+1].y,2.0));
 	}
-	return sqrt(valor);
+	return valor;
 }
 
 template <typename T> 
 double getDistancia(T &t, int i, int j) {
-	return sqrt((t.vertice[i].x - t.vertice[j].x)^2 + (t.vertice[i].y - t.vertice[j].y)^2);
+	return sqrt(pow(t.vertice[i].x - t.vertice[j].x,2.0) + pow(t.vertice[i].y - t.vertice[j].y,2.0));
 }
 
 template <typename T> 
 double getAngulo(T &t, int i) {
 
 		double a,b,c;
+
+		// Optimizable, hacerlo lo más branchless posible
 
 		if (i==t.cantidad_vertices-1) {
 
@@ -172,29 +220,6 @@ int getCantidadVertices(T &t) {
 }
 
 
-
-int main()
-{
-	array<Vertice,5> vertices_pentagono = {0.4, 3.2,
-			  2.1, 1.4,
-			  1.2, 4.4,
-			  5.5, 6.6,
-			  4.2, 1.2};
-
-
-	array<Vertice,3> vertices_triangulo = {0.0, 1.0, 
-			    1.0, 1.0,
-			   1.0, 0.0};
-				
-
-	Poligono pentagono = Inicializar_Figura<Poligono>(vertices_pentagono);
-	Triangulo triangulo = Inicializar_Figura<Triangulo>(vertices_triangulo);
-	//Mostrar_Todos_Los_Vertices(pentagono);
-	cout << endl << endl;
-	Mostrar_Todos_Los_Vertices(triangulo);
-	cout << getAngulo(triangulo, 1);
-	return 0;
-}
 
 
 
