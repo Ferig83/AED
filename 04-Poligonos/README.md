@@ -10,59 +10,55 @@
 #### Restricciones
 No utilizar vectores dinámicos (ej: std::vector).  
 
-#### Hipotesis de trabajo
+#### Léxico e Hipotesis de trabajo
 
 Debemos representar a los polígonos y triángulos como un conjunto de vértices en el plano R^2. Por definición, un polígono no debería tener menos de tres vértices, por lo que el polígono más pequeño es el triángulo. Además, cada polígono tendrá un color y vamos a utilizar el sistema RGB de 24 bits para representarlo (sin el "alpha" que se suele utilizar para transparencia): El sistema consiste en representar el rojo, verde y azúl con un byte cada uno y en ese orden, siendo 00h la ausencia del color y FFh el máximo posible (por ejemplo, el 00FF00h es un verde intenso).
 
 Como operaciones vamos a definir las siguientes:
 
+#### Léxico
 
-##### Inicializar_Figura:  vertices --> polígono
+Sea "vértice" un par ordenado en R^2, "polígono" un conjunto finito de vértices. "índice" la posición del vértice, siendo 0 el primero y cantidad total - 1 el último. Sea "color" el conjunto de 3 bytes que representan el rojo, verde y azul (en ese orden). 
+
+
+- Inicializar_Figura:  vértices --> polígono
   Convierte un conjunto vértices y lo transforma en un polígono o triángulo (color negro por defecto)
 
-##### Mostrar_Todos_Los_Vertices: polígono --> vertices
+- Mostrar_Todos_Los_Vertices: polígono --> vertices
   Muestra como par ordenado todos los vértices del polígono
 
-##### getVertice: polígono x índice --> vértice
+- getVertice: polígono x índice --> vértice
   Devuelve un vértice según índice (del "0" a "cantidad de vertices - 1")
 
-##### getPerimetro: polígono --> R
+- getPerimetro: polígono --> R
   Devuelve el perímetro del polígono, suponiéndolo cerrado (conecta los vértices en orden, y el último vértice con el primero)
 
-##### getLongitud:  polígono x índice x índice --> R
+- getLongitud:  polígono x índice x índice --> R
   Devuelve la longitud de los segmentos que conectan dos vértices referenciados por los índices
 
-##### getDistancia: polígono x índice x índice --> R
+- getDistancia: polígono x índice x índice --> R
   Devuelve la distancia entre dos vértices, referenciados por sus índices
 
-##### getAngulo:  polígono x índice --> R 
+- getAngulo:  polígono x índice --> R 
   Devuelve el ángulo en radianes de un vértice, referenciado por su índice
 
-##### getColor:  polígono --> color
+- getColor:  polígono --> color
   Devuelve el color de un polígono
 
-##### setColor: polígono x color --> polígono
+- setColor: polígono x color --> polígono
   Cambia el color de un polígono
 
-##### AgregarVerticeAlFinal: polígono x vértice --> polígono
+- AgregarVerticeAlFinal: polígono x vértice --> polígono
   Agrega un vértice al final del polígono (recordar que el orden es importante para el cálculo de ángulos)
 
-##### BorrarUltimoVertice: polígono --> polígono
+- BorrarUltimoVertice: polígono --> polígono
   Borra el último vértice de un polígono
 
-#### getCantidadVertices(T &t): polígono --> N
+- getCantidadVertices(T &t): polígono --> N
   Devuelve la cantidad de vértices de un polígono
 
 
 ---
-### Solución
-
-(en desarrollo)
-
-#### Léxico:
-
-
-(en desarrollo, preparar las definiciones de todo y de las funciones)
 
 #### Modelo IPO y resolución del problema:
 
