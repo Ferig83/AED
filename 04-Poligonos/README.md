@@ -16,43 +16,42 @@ Debemos representar a los polígonos y triángulos como un conjunto de vértices
 
 Como operaciones vamos a definir las siguientes:
 
-(en desarrollo)
 
 ##### Inicializar_Figura:  vertices --> polígono
-Convierte un conjunto vértices y lo transforma en un polígono o triángulo (color negro por defecto)
+  Convierte un conjunto vértices y lo transforma en un polígono o triángulo (color negro por defecto)
 
 ##### Mostrar_Todos_Los_Vertices: polígono --> vertices
-Muestra como par ordenado todos los vértices del polígono
+  Muestra como par ordenado todos los vértices del polígono
 
 ##### getVertice: polígono x índice --> vértice
-Devuelve un vértice según índice (del "0" a "cantidad de vertices - 1")
+  Devuelve un vértice según índice (del "0" a "cantidad de vertices - 1")
 
 ##### getPerimetro: polígono --> R
-Devuelve el perímetro del polígono, suponiéndolo cerrado (conecta los vértices en orden, y el último vértice con el primero)
+  Devuelve el perímetro del polígono, suponiéndolo cerrado (conecta los vértices en orden, y el último vértice con el primero)
 
 ##### getLongitud:  polígono x índice x índice --> R
-Devuelve la longitud de los segmentos que conectan dos vértices referenciados por los índices
+  Devuelve la longitud de los segmentos que conectan dos vértices referenciados por los índices
 
 ##### getDistancia: polígono x índice x índice --> R
-Devuelve la distancia entre dos vértices, referenciados por sus índices
+  Devuelve la distancia entre dos vértices, referenciados por sus índices
 
 ##### getAngulo:  polígono x índice --> R 
-Devuelve el ángulo en radianes de un vértice, referenciado por su índice
+  Devuelve el ángulo en radianes de un vértice, referenciado por su índice
 
 ##### getColor:  polígono --> color
-Devuelve el color de un polígono
+  Devuelve el color de un polígono
 
 ##### setColor: polígono x color --> polígono
-Cambia el color de un polígono
+  Cambia el color de un polígono
 
 ##### AgregarVerticeAlFinal: polígono x vértice --> polígono
-Agrega un vértice al final del polígono (recordar que el orden es importante para el cálculo de ángulos)
+  Agrega un vértice al final del polígono (recordar que el orden es importante para el cálculo de ángulos)
 
 ##### BorrarUltimoVertice: polígono --> polígono
-Borra el último vértice de un polígono
+  Borra el último vértice de un polígono
 
-##### getCantidadVertices(T &t): polígono --> N
-Devuelve la cantidad de vértices de un polígono
+#### getCantidadVertices(T &t): polígono --> N
+  Devuelve la cantidad de vértices de un polígono
 
 
 ---
