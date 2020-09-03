@@ -1,3 +1,4 @@
+
 /******************************************
 *
 *  Trabajo Práctico N° 4 - Polígonos y triángulos
@@ -54,17 +55,17 @@ struct Poligono {
 
 
 template <typename T, typename G> T Inicializar_Figura(G &vertices);
-template <typename T> void Mostrar_Todos_Los_Vertices(T &t);
-template <typename T> Vertice Mostrar_Vertice_En(T &t, int n);
-template <typename T> double getPerimetro(T &t);
-template <typename T> double getLongitud(T &t, int i, int fin);
-template <typename T> double getDistancia(T &t, int i, int j);
-template <typename T> double getAngulo(T &t, int i); 
-template <typename T> ColorRGB getColor(T &t);
+template <typename T> void Mostrar_Todos_Los_Vertices(const T &t);
+template <typename T> Vertice getVertice(const T &t, int n);
+template <typename T> double getPerimetro(const T &t);
+template <typename T> double getLongitud(const T &t, int i, int fin);
+template <typename T> double getDistancia(const T &t, int i, int j);
+template <typename T> double getAngulo(const T &t, int i); 
+template <typename T> ColorRGB getColor(const T &t);
 template <typename T> void setColor(T &t, ColorRGB color);
-template <typename T> void AgregarVerticeAlFinal(T &t, Vertice vertice);
-template <typename T> void BorrarUltimoVertice(T &t);
-template <typename T> int getCantidadVertices(T &t);
+void AgregarVerticeAlFinal(Poligono &t, Vertice vertice);
+void BorrarUltimoVertice(Poligono &t);
+template <typename T> unsigned getCantidadVertices(const T &t);
 
 
 
@@ -120,7 +121,7 @@ T Inicializar_Figura(G &vertices) {
 
 
 template <typename T> 
-void Mostrar_Todos_Los_Vertices(T &t) {
+void Mostrar_Todos_Los_Vertices(const T &t) {
 	for (int i = 0; i < t.cantidad_vertices; ++i){ 
 		std::cout << "\n(" << t.vertices[i].x << " ; " << t.vertices[i].y << ")";
 	} 
@@ -128,14 +129,14 @@ void Mostrar_Todos_Los_Vertices(T &t) {
 
 
 template <typename T> 
-Vertice Mostrar_Vertice_En(T &t, int n) {
+Vertice getVertice(const T &t, int n) {
 	assert(t.cantidad_vertices > n);
 	return t.vertice[n];
 }
 
 
 template <typename T> 
-double getPerimetro(T &t) {
+double getPerimetro(const T &t) {
 	double valor = 0;
 	for (int i = 0; i < (t.cantidad_vertices - 1); ++i){
 	 	valor = valor + sqrt(pow(t.vertice[i].x - t.vertice[i+1].x,2.0) + pow(t.vertice[i].y - t.vertice[i+1].y,2.0));
@@ -145,7 +146,7 @@ double getPerimetro(T &t) {
 }
 
 template <typename T> 
-double getLongitud(T &t, int i, int fin) {
+double getLongitud(const T &t, int i, int fin) {
 	double valor = 0;
 	for (; i < (fin - 1); ++i){
 	 	valor = valor + sqrt(pow(t.vertice[i].x - t.vertice[i+1].x,2.0) + pow(t.vertice[i].y - t.vertice[i+1].y,2.0));
@@ -154,12 +155,12 @@ double getLongitud(T &t, int i, int fin) {
 }
 
 template <typename T> 
-double getDistancia(T &t, int i, int j) {
+double getDistancia(const T &t, int i, int j) {
 	return sqrt(pow(t.vertice[i].x - t.vertice[j].x,2.0) + pow(t.vertice[i].y - t.vertice[j].y,2.0));
 }
 
 template <typename T> 
-double getAngulo(T &t, int i) {
+double getAngulo(const T &t, int i) {
 
 		double a,b,c;
 
@@ -193,7 +194,7 @@ double getAngulo(T &t, int i) {
 
 
 template <typename T> 
-ColorRGB getColor(T &t) {
+ColorRGB getColor(const T &t) {
 		return t.color;		
 }
 
@@ -202,20 +203,19 @@ void setColor(T &t, ColorRGB color) {
 		t.color = color;		
 }
 
-template <typename T> 
-void AgregarVerticeAlFinal(T &t, Vertice vertice) {
-	assert (n < VERTICES_MAXIMOS);
+void AgregarVerticeAlFinal(Poligono &t, Vertice vertice) {
+	assert (t.cantidad_vertices < VERTICES_MAXIMOS);
 	t.cantidad_vertices += 1;
 	t.vertices[t.cantidad_vertices] = vertice;
 }
 
-template <typename T> 
-void BorrarUltimoVertice(T &t) {
+ 
+void BorrarUltimoVertice(Poligono &t) {
 	t.cantidad_vertices -= 1;
 }
 
 template <typename T> 
-int getCantidadVertices(T &t) {
+unsigned getCantidadVertices(const T &t) {
 	return t.cantidad_vertices;
 }
 
