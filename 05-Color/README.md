@@ -1,4 +1,4 @@
-## TP 04-Color
+## TP 05-Color
 
 ---
 
@@ -60,14 +60,14 @@ Dado un texto y un nombre de archivo, crea un archivo <normbre archivo>.SVG que 
 
 Se obtienen como constantes con valores RGB representados con el tipo de dato Color_RGB:
 
-rojo = (255,0,0)
-verde = (0,255,0)
-azul = (0,0,255)
-amarillo = (255,255,0)
-magenta = (255,0,255)
-cyan = (0,255,255)
-blanco = (255,255,255)
-negro = (0,0,0)
+* rojo = (255,0,0)
+* verde = (0,255,0)
+* azul = (0,0,255)
+* amarillo = (255,255,0)
+* magenta = (255,0,255)
+* cyan = (0,255,255)
+* blanco = (255,255,255)
+* negro = (0,0,0)
 
 ---
 
@@ -82,86 +82,67 @@ A continuación se listan las operaciones para el tipo de dato Color_RGB, descri
 
 __IMPORTANTE: Todas las funciones, estructuras y constantes propias de esta implementación viven en el namespace "color", por lo que debe anteponerse "color::" para cada una__
 
-* poligono mezclarColor(array <Vertice, n > , ColorRGB color)
+* Color_RGB mezclarColor(Color_RGB color1, Color_RGB color2, uint8_t porcentaje1, uint8_t porcentaje2)
 
-  - ENTRADA: Un array de n __Vertice__ que representan el polígono, y un color del tipo ColorRGB
-  - PROCESAMIENTO: Mueve los vértices a la estructura de salida, así también como su cantidad
-  - SALIDA: Una estructura del tipo __Poligono__ 
+  - ENTRADA: Dos colores tipo Color_RGB a mezclar, y los porcentajes respectivos en números enteros (máximo porcentaje: 255).
+  - PROCESAMIENTO: Controla que la mezcla no supere los 255 por cada canal, y realiza el promedio.
+  - SALIDA: La mezcla final de tipo Color_RGB
 
-* template <typename T> void Mostrar_Todos_Los_Vertices(const T &t)
+* Color_RGB sumarColor(Color_RGB color1, Color_RGB color2)
 
-  - ENTRADA: Una estructura del tipo __Poligono__ 
-  - PROCESAMIENTO: Itera los vértices de la estructura de entrada mediante un ciclo FOR e imprime los valores utilizando std::cout
-  - SALIDA: La impresión en pantalla de los valores (la función en sí misma no devuelve datos de retorno)
+  - ENTRADA: Dos colores tipo Color_RGB a sumar
+  - PROCESAMIENTO: Controla que la suma no supere los 255 por cada canal, y realiza la suma
+  - SALIDA: La suma final de tipo Color_RGB. Si algún canal superó el valor 255, se setea a 255.
 
-* template <typename T> Vertice getVertice(const T &t, int n)
- 
-  - ENTRADA Una estructura del tipo __Poligono__  , junto con un número natural que representa el índice
-  - PROCESAMIENTO: Simplemente retorna el vértice en el índice indicado 
-  - SALIDA: Devuelve el vértice en el índice indicado
- 
-* template <typename T> double getPerimetro(const T &t)
- 
-  - ENTRADA: Una estructura del tipo __Poligono__ 
-  - PROCESAMIENTO: Calcula cada una de las longitudes entre vértices mediante un ciclo FOR, incluyendo (aunque fuera del ciclo) la longitud entre el primer vértice y el último. Para calcular cada longitud se restan las coordenadas de los vértices, se elevan al cuadrado y se suman. Por último, se le hace la raiz cuadrada.
-  - SALIDA: Un número real con la suma de las longitudes calculadas.
-  
-* template <typename T> double getLongitud(const T &t, int i, int fin)
- 
-  - ENTRADA: Una estructura del tipo __Poligono__ , y dos ínidices naturales
-  - PROCESAMIENTO: Calcula la suma de las longitudes de los segmentos comprendidos entre dos vértices, iterando los vértices y segmentos que están entre ellos. El cálculo es similar al del perímetro, solo que selectiva a los vértices indicados.
-  - SALIDA: La suma de la longitud de los segmentos
- 
-* template <typename T> double getDistancia(const T &t, int i, int j)
+* Color_RGB restarColor(Color_RGB color1, Color_RGB color2)
 
-  - ENTRADA : Una estructura del tipo __Poligono__  , y dos ínidices naturales
-  - PROCESAMIENTO: De manera similar al cálculo de longitud, se calcula la distancia entre dos vértices.
-  - SALIDA: Numero real con la distancia calculada.
- 
-* template <typename T> double getAngulo(const T &t, int i)
-
-  - ENTRADA: Una estructura del tipo __Poligono__  y un indice natural
-  - PROCESAMIENTO: Se realiza el teorema del coseno para calcular el ángulo del vértice indicado. Si el vértice está en un extremo, se calcula como si el polígono fuese cerrado.
-  - SALIDA: Un número real representando en radianes el valor del ángulo
+  - ENTRADA: Dos colores tipo Color_RGB a restar
+  - PROCESAMIENTO: Controla que la resta no baje del 0 por cada canal, y realiza la resta
+  - SALIDA: La resta final de tipo Color_RGB. Si algún canal bajó del 0, se setea a 0.
 
 
-* template <typename T> ColorRGB getColor(const T &t)
- 
-   - ENTRADA: Una estructura del tipo __Poligono__ 
-   - PROCESAMIENTO: Simplemente retorna el color del polígono o triángulo
-   - SALIDA: El color del polígono o triángulo como estructura _ColorRGB_
- 
-* template <typename T> void setColor(T &t, ColorRGB color);
+* Color_RGB getComplementario(Color_RGB color)
 
-   - ENTRADA: Una estructura del tipo __Poligono__ y una estructura del tipo ColorRGB
-   - PROCESAMIENTO: Cambia el color del polígono o triángulo
-   - SALIDA: ninguna
- 
-* void AgregarVerticeAlFinal(Poligono &t, Vertice vertice);
+  - ENTRADA: Un color tipo Color_RGB
+  - PROCESAMIENTO: Hace la resta del blanco menos el color de entrada
+  - SALIDA: Un color tipo Color_RGB, siendo el complementario del  color argumento.
 
-   - ENTRADA: Una estructura del tipo __Poligono__ y una estructura del tipo __Vertice__
-   - PROCESAMIENTO: Agrega el vértice ingresado al final del polígono, corroborando que no pase el techo de cantidades máximas de vértices permitidas
-   - SALIDA: ninguna
+* (FUNCIÓN AUXILIAR) std::string getHex(int valor)  
+
+  - ENTRADA: Un valor entero
+  - PROCESAMIENTO: Convierte el número mediante la función sprintf a formato hexadecimal de dos dígitos.
+  - SALIDA: Una cadena de dos caracteres con el número en hexadecimal (letras mayúsculas).
+
+* std::string getHtmlRgb(Color_RGB color)
+
+  - ENTRADA: Un dato tipo Color_RGB
+  - PROCESAMIENTO: Crea una cadena con el texto "rgb(x,y,z)" donde x,y,z son los valores en decimal de los canales del color argumento.
+  - SALIDA: La cadena convertida.
+
+* std::string getHtmlHex(Color_RGB color)
+
+  - ENTRADA: Un dato tipo Color_RGB
+  - PROCESAMIENTO: Crea una cadena con el texto "#XXYYZZ" donde X,Y,Z son los valores en hexadecimal de los canales del color argumento. Utiliza getHex.
+  - SALIDA: La cadena convertida.
+
+* void CrearSvgConTextoEscritoEnAltoContraste(std::string nombre_archivo, std::string texto, Color_RGB color)
+
+  - ENTRADA: Una cadena con el nombre del archivo, una cadena con el texto a mostrar y un dato tipo Color_RGB
+  - PROCESAMIENTO: Se crea un archivo utilizando ofstream, el cual se carga la información .SVG eligiendo como parámetros los indicados (más el complementario). Se utiliza getHtmlRgb y getHtmlHex.
+  - SALIDA: Ninguna, pero se crea el archivo como efecto de lado, el cual puede ser probado en un navegador web que soporte .SVG
 
 
-* void BorrarUltimoVertice(Poligono &t);
+* bool isIgual(Color_RGB color1, Color_RGB color2);
 
 
-   - ENTRADA: Una estructura del tipo __Poligono__ 
-   - PROCESAMIENTO: Reduce en una unidad el indicador _cantidad_vertices_
-   - SALIDA: ninguna
-
-
-* template <typename T> unsigned getCantidadVertices(const T &t);
-
-   - ENTRADA: Una estructura del tipo __Poligono__ 
-   - PROCESAMIENTO: Retorna la cantidad de vértices dada por _cantidad_vertices_
-   - SALIDA: Un numero natural representando la cantidad de vértices
+  - ENTRADA: Dos tipos de dato Color_RGB
+  - PROCESAMIENTO: Se compara cada canal de ambos colores.
+  - SALIDA: Verdadero si los canales son iguales. Falso si no lo son.
 
 
 
 ### Extra
 
-La versión en lenguaje ensamblador no va a estar disponible para este trabajo práctico, pero en su lugar sugiero ver un visualizador de objetos 3D que estoy desarrollando, programado 100% en NASM: https://github.com/Ferig83/Visor3D_ASM   (solo para Windows, x64)
+Como en el TP anterior, la versión en lenguaje ensamblador no va a estar disponible para este trabajo práctico, pero en su lugar sugiero ver un visualizador de objetos 3D que estoy desarrollando, programado 100% en NASM: https://github.com/Ferig83/Visor3D_ASM   (solo para Windows, x64)
 
-Cubre de sobra todos los conceptos (y muchos más!), excepto el de plantillas/templates. Además es muy lindo de ver :)  
+Este visualizador muestra un gráfico en 3D y tiene un sistema de sombreado dinámico, por lo que se utiliza el sistema RGB para darle color al objeto. Se realiza el producto escalar de las normales de los triángulos que componen el objeto y el vector que representa la dirección de la luz (ambos normalizados). Se obtiene un valor de 0 a 1 y se utiliza el mismo para definir la proporcion del valor de todos los canales (cuanto más perpendicular sea la luz al plano, más oscuro el color).
