@@ -1,6 +1,5 @@
 ## TP 07-Flujos
 
-(IMPORTANTE: Debería ser el N° 6 pero junté dos trabajos en el N° 4, por lo que regularizo todo a partir de este)
 ---
 
 ### Análisis del problema
@@ -122,8 +121,9 @@ Envía al flujo todos los datos del polígono y retorna verdadero si la operaci�
   - PROCESAMIENTO: Envía al flujo de salida el polígono entero
   - SALIDA: Booleano que es true si los datos se pueden ingresar.
 
+### Notas
 
-
+Este TP Debería ser el N° 6 pero junté dos trabajos en el N° 4, por lo que regularizo todo a partir de este.
 
 
 
