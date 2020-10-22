@@ -52,7 +52,7 @@ int main()
 
 	poligono::Poligono prueba_entrada_cin[2];
 
-/*	for (int i = 0; poligono::ExtraerPoligono(std::cin, prueba_entrada_cin[i]) ; ++i);
+	for (int i = 0; poligono::ExtraerPoligono(std::cin, prueba_entrada_cin[i]) ; ++i);
 
 	// Pruebas visuales
 
@@ -69,7 +69,7 @@ int main()
 
 	}
 
-*/
+
 
 
 	// -------- Introduzco los polígonos de la pruebas para enviarlos al un flujo de salida      
