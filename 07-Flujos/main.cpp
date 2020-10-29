@@ -17,6 +17,27 @@
 int main()
 {
 
+	// -------- Filtramos los polígonos cuyo perímetro es menor a 10.0 
+
+	std::ifstream flujo_entrada_con_filtro;
+	std::ofstream flujo_salida_con_filtro;
+	
+	flujo_entrada_con_filtro.open("flujo_entrada_con_filtro.pol");
+	flujo_salida_con_filtro.open("flujo_salida_con_filtro.pol");
+
+	poligono::Poligono poligono_a_filtrar;
+	
+	for (;poligono::ExtraerPoligono(flujo_entrada_con_filtro,poligono_a_filtrar);) {
+		if (!(poligono::getPerimetro(poligono_a_filtrar) < 10.0)) {
+		 poligono::EnviarPoligono(flujo_salida_con_filtro, poligono_a_filtrar);
+		}
+
+	}
+
+	flujo_entrada_con_filtro.close();
+	flujo_salida_con_filtro.close();
+
+
       // --------- Prueba por entrada de archivo
       
 	std::ifstream flujo_entrada;
