@@ -19,6 +19,8 @@ int main()
 
 	// -------- Filtramos los polígonos cuyo perímetro es menor a 10.0 
 
+	const double filtro = 10.0;
+	
 	std::ifstream flujo_entrada_con_filtro;
 	std::ofstream flujo_salida_con_filtro;
 	
@@ -28,7 +30,7 @@ int main()
 	poligono::Poligono poligono_a_filtrar;
 	
 	for (;poligono::ExtraerPoligono(flujo_entrada_con_filtro,poligono_a_filtrar);) {
-		if (!(poligono::getPerimetro(poligono_a_filtrar) < 10.0)) {
+		if (!(poligono::getPerimetro(poligono_a_filtrar) < filtro)) {
 		 poligono::EnviarPoligono(flujo_salida_con_filtro, poligono_a_filtrar);
 		}
 
