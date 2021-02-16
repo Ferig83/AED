@@ -13,7 +13,7 @@
 
 #### Léxico e Hipótesis de trabajo
 
-Los contenedores son tipos de datos o estructuras que contienen en si mismos otro tipo de objetos (ya sean estructuras, tipos de datos atomicos, otros contenedores, etc). Por ejemplo, se puede diseñar un contenedor como una pila que funcione como tal y maneje en su estructura cualquier tipo de dato (inclusive otra pila). Se diferencia de las estructuras en que los tipos de datos no están definidos en nuestro código (sí se definen al compilarse).
+Los contenedores son tipos de datos o estructuras que contienen en si mismos otro tipo de objetos (ya sean estructuras, tipos de datos atómicos, otros contenedores, etc). Por ejemplo, se puede diseñar un contenedor como una pila que funcione como tal y maneje en su estructura cualquier tipo de dato (inclusive otra pila). Se diferencia de las estructuras en que los tipos de datos no están definidos en nuestro código (sí se definen al compilarse).
 
 En C++ podemos encontrar muchos contenedores implementados bajo la forma de "templates" (y una biblioteca llamada Standard Template Library que los incluye), como por ejemplo std::array que permite manejar un array continuo utilizando como objetos del array el tipo de dato o estructura que queramos.
 
