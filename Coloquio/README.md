@@ -25,7 +25,7 @@ En esta presentación diseñamos tres tipos de contenedores utilizando el mismo 
 
 ##### Contenedores Enlazados
 
-Sea "Tipo" un tipo de dato y Tipo_1, Tipo_2 ... Tipo_n  las posiciones ordenadas de los objetos creados bajo ese tipos de dato.
+Sea "Tipo" un tipo de dato y Tipo_1, Tipo_2 ... Tipo_n  las posiciones ordenadas de los objetos creados bajo ese tipos de dato, y "n" el número de datos totales
 
 - __Lista_Enlazada__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
 
@@ -90,9 +90,9 @@ Se requiere que los pacientes que han llegado primero a la recepción sean los p
 
 El modelo IPO puede consistir en:
 
-Entrada: Ingreso de pacientes en la cola mediante teclado
-Procesamiento: Dar formato al nombre para su salida y adherir un mensaje de "Pase, por favor"
-Salida: Enviar el flujo de datos a través de un archivo que representaría el buffer del display, con posterior borrado del elemento
+* Entrada: Ingreso de pacientes en la cola mediante teclado
+* Procesamiento: Dar formato al nombre para su salida y adherir un mensaje de "Pase, por favor"
+* Salida: Enviar el flujo de datos a través de un archivo que representaría el buffer del display, con posterior borrado del elemento
 
 La aplicación es muy simple pero demuestra de una manera sencilla el sistema FIFO y cómo la Cola diseñada actúa como contenedor de la estructura Paciente (la cual tiene nombre y apellido como cadenas).
 
@@ -105,3 +105,18 @@ Se necesita una aplicación base que consiste en una agenda con cuatro celdas de
 
 La agenda misma consiste en un archivo donde se tienen todos los datos pero para conveniencia se almacenarán todos en memoria apenas se inicia la aplicación. Este almacenamiento requerirá de poder editar cualquier nodo de la lista donde se guarde, por lo que se ve conveniente  utilizar nuestro contenedor "Lista_Enlazada", que contendrá la estructura "Persona" (la cual contiene nombre, apellido, dirección y teléfono). Sin embargo, también debemos escribir un sistema para deshacer los cambios en el caso de que el usuario se haya equivocado, y este tipo de sistemas cumple muy bien con el método de almacenamiento LIFO (Last In First Out - Último en Entrar, Primero en Salir) haciendo ideal el uso de la Pila (los últimos cambios son los que se deben deshacer primero).
 
+El modelo IPO puede consistir en:
+
+Para edición de datos:
+
+* Entrada: Ingreso de datos de personas y un número N 
+* Procesamiento: Reemplazar (en memoria) la entrada en la posición N por el ingreso solicitado en la entrada
+* Salida: Base de datos modificada
+
+Para deshacer cambios:
+
+* Entrada: Base de datos con una última modificación
+* Procesamiento: Reemplazar la última modificación por una anterior
+* Salida: Base de datos sin la última modificación
+
+La aplicación es un ejemplo combinado de Lista_Enlazada y Pila, y representa una agenda muy simplificada para demostrar de manera sencilla el posible uso de ambos contenedores.
