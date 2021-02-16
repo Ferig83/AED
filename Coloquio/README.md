@@ -5,7 +5,7 @@
 ### Análisis del problema
 
 #### Enunciado
- Crear contenedores, realizar las pruebas pertinentes y dar ejemplos de uso.
+ Crear contenedores (enlazados y continuos), realizar las pruebas pertinentes y dar ejemplos de uso.
  
 #### Restricciones
 
