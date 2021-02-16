@@ -23,13 +23,59 @@ En esta presentación diseñamos tres tipos de contenedores utilizando el mismo 
 * Pila
 * Cola
 
-- __Lista_Enlazada__ = {  
+##### Contenedores Enlazados
+
+Sea "Tipo" un tipo de dato y Tipo_1, Tipo_2 ... Tipo_n  las posiciones ordenadas de los objetos creados bajo ese tipos de dato.
+
+- __Lista_Enlazada__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
 
 Con los siguientes métodos:
 
-* Constructor
-* agregar_al_final
-* Destructor
+* agregar_al_final(Tipo x) = {(Tipo_1); (Tipo_2); ...; (Tipo_n); (x_n+1)}
+* agregar_en(Tipo x, m) = {(Tipo_1); (Tipo_2); ...; (x_m) ;...; (Tipo_n+1)}
+* set_nodo(Tipo x, m) = Tipo_m -> x_m
+* borrar_nodo (m) = Tipo_m -> nulo  ^  n = n - 1    (ordinal decrementado en 1)
+*	get_dato_nodo (m) = Tipo_m
+* get_tamanio = n
+* is_vacia = verdadero si el ordinal de Lista_Enlazada es 0 , falso si el ordinal de Lista_Enlazada es distinto de cero
+
+
+- __Pila__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
+
+Con los siguientes métodos:
+
+* push(Tipo x) = {(x); (Tipo_(1+1)); (Tipo_(2+1)); ...; ((Tipo_(n+1))}
+* pop = Tipo_1  con {(Tipo_2);(Tipo_3);(Tipo_4); ... ;(Tipo_n-1)} ^  n = n - 1 (ordinal decrementado en 1)
+* peek = Tipo_1
+* get_tamanio = n
+* is_vacia = verdadero si el ordinal de Pila es 0, falso si el ordinal de Pila es distinto de cero
+
+
+- __Cola__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
+
+Con los siguientes métodos:
+
+* queue(Tipo x) = {(Tipo_1); (Tipo_2); ...; (Tipo_n); (x)}
+* unqueue = Tipo_1  con {(Tipo_2);(Tipo_3);(Tipo_4); ... ;(Tipo_n-1)} ^  n = n - 1    (ordinal decrementado en 1)
+* frente = Tipo_1
+* get_tamanio = n
+* is_vacia = verdadero si el ordinal de Cola es 0, falso si el ordinal de Cola es distinto de cero
+
+##### Contenedores Continuos:
+
+Las expresiones algebraicas son iguales en Lista_Enlazada y Cola, la única que sufre diferencia es la Pila donde el almacenamiento y extracción de datos se hace al final de la lista por razones de eficiencia:
+
+
+- __Pila__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
+
+Con los siguientes métodos:
+
+* push(Tipo x) =  {(Tipo_1); (Tipo_2); ...; (Tipo_n); (x)}
+* pop = Tipo_1  con {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n-1)} ^  n = n - 1 (ordinal decrementado en 1)
+* peek = Tipo_n
+* get_tamanio = n
+* is_vacia = verdadero si el ordinal de Pila es 0, falso si el ordinal de Pila es distinto de cero
+
 
 
 ## Ejemplos de implementación:
