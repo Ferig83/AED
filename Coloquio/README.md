@@ -63,7 +63,13 @@ Con los siguientes métodos:
 
 ##### Contenedores Continuos:
 
-Las expresiones algebraicas son iguales en Lista_Enlazada y Cola, la única que sufre diferencia es la Pila donde el almacenamiento y extracción de datos se hace al final de la lista por razones de eficiencia:
+- __Lista_Continua__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
+
+Con los siguientes métodos:
+
+* set_nodo(Tipo x, m) = Tipo_m -> x_m
+*	get_dato_nodo (m) = Tipo_m
+* get_tamanio = n
 
 
 - __Pila__ = {(Tipo_1);(Tipo_2);(Tipo_3); ... ;(Tipo_n)}
@@ -75,6 +81,17 @@ Con los siguientes métodos:
 * peek = Tipo_n
 * get_tamanio = n
 * is_vacia = verdadero si el ordinal de Pila es 0, falso si el ordinal de Pila es distinto de cero
+
+
+- __Cola__ = {(Tipo_n);....;(Tipo_3);(Tipo_2);(Tipo_1)}
+
+Con los siguientes métodos:
+
+* queue(Tipo x) = {(x);(Tipo_n);....;(Tipo_3);(Tipo_2);(Tipo_1)}
+* unqueue = Tipo_1  con {(Tipo_n-1);....;(Tipo_3);(Tipo_2)} ^  n = n - 1    (ordinal decrementado en 1)
+* frente = Tipo_1
+* get_tamanio = n
+* is_vacia = verdadero si el ordinal de Cola es 0, falso si el ordinal de Cola es distinto de cero
 
 
 
