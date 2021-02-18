@@ -35,9 +35,9 @@ namespace ayed {
 
 	        Lista_Enlazada();
 
-		void agregar_al_final(Tipo dato_a_agregar);
-		void agregar_en(Tipo dato_a_agregar, unsigned posicion);   
-         	void set_nodo(Tipo dato_a_agregar, unsigned numero_del_nodo);
+		void agregar_al_final(const Tipo &dato_a_agregar);
+		void agregar_en(const Tipo &dato_a_agregar, unsigned posicion);   
+         	void set_nodo(const Tipo &dato_a_agregar, unsigned numero_del_nodo);
 		void borrar_nodo (unsigned numero_del_nodo); 	
 		Tipo get_dato_nodo (unsigned numero_del_nodo);
 		unsigned get_tamanio();
@@ -58,85 +58,71 @@ namespace ayed {
 //-----------------------------------------------------------------------------
 
 
-/* Definiciones  --  los templates no puedo definirlos fuera del header :(  */
-
-
 template <class Tipo> 
 ayed::Lista_Enlazada<Tipo>::Lista_Enlazada() {
-   primer_nodo = nullptr;
+  primer_nodo = nullptr;
 }
+
+//-----------------------------------------------------------------------------
 
 template <class Tipo> 
 ayed::Lista_Enlazada<Tipo>::~Lista_Enlazada() {
 
-   if (primer_nodo != nullptr) { 
-
-   Nodo<Tipo>* indice_nodo = primer_nodo;
-     while (indice_nodo != nullptr) {
-        Nodo<Tipo>* nodo_a_borrar;
-        nodo_a_borrar = indice_nodo;
-        indice_nodo = indice_nodo->siguiente_nodo;
-        delete nodo_a_borrar;
-        std::cout << "\nNodo lista enlazada borrado desde el destructor";
-     }
+   while (cantidad_nodos != 0) {
+      borrar_nodo(0);   
+      std::cout << "\nNodo lista enlazada borrado desde el destructor";
    }
+
+}
+
+//-----------------------------------------------------------------------------
+
+template <class Tipo>
+void ayed::Lista_Enlazada<Tipo>::agregar_al_final(const Tipo &dato_a_agregar) {
+
+  agregar_en(dato_a_agregar, cantidad_nodos);
+   
 }
 
 
 template <class Tipo>
-void ayed::Lista_Enlazada<Tipo>::agregar_al_final(Tipo dato_a_agregar) {
+void ayed::Lista_Enlazada<Tipo>::agregar_en(const Tipo &dato_a_agregar, unsigned posicion) {
 
    Nodo<Tipo>* nodo_nuevo = new Nodo<Tipo>; 
-   nodo_nuevo->siguiente_nodo = nullptr;
    nodo_nuevo->dato = dato_a_agregar;
 
-   if (cantidad_nodos == 0) {
+   if (primer_nodo == nullptr) {
       primer_nodo = nodo_nuevo;
+      nodo_nuevo->siguiente_nodo = nullptr;     
    } else {
-		   
-      Nodo<Tipo>* indice_nodo = primer_nodo;
-      while (indice_nodo->siguiente_nodo != nullptr) {
-         indice_nodo = indice_nodo->siguiente_nodo;
+
+      if (posicion == 0) {
+         nodo_nuevo->siguiente_nodo = primer_nodo;
+         primer_nodo = nodo_nuevo;
+
+      } else {
+
+        Nodo<Tipo>* nodo_siguiente_al_nuevo; 
+        Nodo<Tipo>* indice_nodo = primer_nodo;
+        for (unsigned i = 0; i < posicion-1; ++i) {
+           indice_nodo = indice_nodo->siguiente_nodo;
+        } 
+        nodo_siguiente_al_nuevo = indice_nodo->siguiente_nodo;
+        nodo_nuevo->siguiente_nodo = nodo_siguiente_al_nuevo;
+        indice_nodo->siguiente_nodo = nodo_nuevo;   
       }
-      indice_nodo->siguiente_nodo = nodo_nuevo; 
-
-   }
-
-     
-   cantidad_nodos++;
-
-}
-
-
-template <class Tipo>
-void ayed::Lista_Enlazada<Tipo>::agregar_en(Tipo dato_a_agregar, unsigned posicion) {
-
-   Nodo<Tipo>* nodo_nuevo = new Nodo<Tipo>; 
-   nodo_nuevo->dato = dato_a_agregar
-
-   // Revisar bien esto si no hay nodos, y eso
-		   
-   Nodo<Tipo>* indice_nodo = primer_nodo;
-   for (int i = 0; i < posicion - 1; ++i) {
-      indice_nodo = indice_nodo->siguiente_nodo;
-   }
-
-   Nodo<Tipo>* nodo = indice_nodo->siguiente_nodo;
-   
-   indice_nodo->siguiente_nodo = nodo_nuevo;
-   nodo_nuevo->siguiente_nodo = nodo;   
-   cantidad_nodos++;
+   }   
+   ++cantidad_nodos;
 
 }
 
 
 
-
 template <class Tipo>
-void ayed::Lista_Enlazada<Tipo>::set_nodo(Tipo dato_a_agregar, unsigned numero_del_nodo) {
+void ayed::Lista_Enlazada<Tipo>::set_nodo(const Tipo &dato_a_agregar, unsigned numero_del_nodo) {
 
    Nodo<Tipo>* indice_nodo = primer_nodo;
-   for (unsigned i = 0; i < numero_del_nodo; i++) {
+   for (unsigned i = 0; i < numero_del_nodo; ++i) {
       indice_nodo = indice_nodo->siguiente_nodo;
    }
    indice_nodo->dato = dato_a_agregar;
@@ -147,14 +133,29 @@ void ayed::Lista_Enlazada<Tipo>::set_nodo(Tipo dato_a_agregar, unsigned numero_d
 template <class Tipo>
 void ayed::Lista_Enlazada<Tipo>::borrar_nodo (unsigned numero_del_nodo) {
 
-   Nodo<Tipo>* indice_nodo = primer_nodo;
-    for (int i = 0; i < (numero_del_nodo-1); i++) {
-       indice_nodo = indice_nodo->siguiente_nodo;	
-    }   
-    Nodo<Tipo>* nodo_a_borrar = indice_nodo->siguiente_nodo;
-    indice_nodo->siguiente_nodo = nodo_a_borrar->siguiente_nodo;
-    delete nodo_a_borrar; 
-    cantidad_nodos--;
+   if (primer_nodo != nullptr) {
+      Nodo<Tipo>* nodo_a_borrar;
+    
+      if (numero_del_nodo == 0) {
+        nodo_a_borrar = primer_nodo;
+        primer_nodo = primer_nodo->siguiente_nodo;
+
+
+      } else {
+
+        Nodo<Tipo>* indice_nodo = primer_nodo;
+            
+        for (unsigned i = 0; i < numero_del_nodo-1; ++i) {
+           indice_nodo = indice_nodo->siguiente_nodo;
+        } 
+
+        nodo_a_borrar = indice_nodo->siguiente_nodo;
+        indice_nodo->siguiente_nodo = nodo_a_borrar->siguiente_nodo;
+      }
+        delete nodo_a_borrar; 
+        cantidad_nodos--;
+ 
+   }
 } 	
 	        
 
@@ -163,7 +164,7 @@ Tipo ayed::Lista_Enlazada<Tipo>::get_dato_nodo (unsigned numero_del_nodo) {
 
    Nodo<Tipo>* indice_nodo = primer_nodo;
   
-   for (int i = 0; i < numero_del_nodo; i++) {
+   for (unsigned i = 0; i < numero_del_nodo; ++i) {
       indice_nodo = indice_nodo->siguiente_nodo;
    }
    return indice_nodo->dato;
@@ -186,6 +187,7 @@ bool ayed::Lista_Enlazada<Tipo>::is_vacia() {
 
 
 //-----------------------------------------------------------------------------
+//--- PILA ---
 //-----------------------------------------------------------------------------
 
 namespace ayed {
@@ -196,10 +198,10 @@ namespace ayed {
 
 	public:
 
-	        Pila(Tipo dato_a_agregar);
+	        Pila(const Tipo &dato_a_agregar);
 	        Pila();
 
-		void push(Tipo dato_a_agregar);
+		void push(const Tipo &dato_a_agregar);
          	Tipo pop();
 		Tipo peek();  
 		bool is_vacia();
@@ -216,23 +218,17 @@ namespace ayed {
 
 }
 
+//-----------------------------------------------------------------------------
 
 template <class Tipo> 
-ayed::Pila<Tipo>::Pila(Tipo dato_a_agregar) {
+ayed::Pila<Tipo>::Pila(const Tipo &dato_a_agregar) {
 
-   try  {
-      primer_nodo = new Nodo<Tipo>;
-   }
+	push(dato_a_agregar);
 
-   catch (std::bad_alloc& ba) {
-      std::cerr << "Error en reserva de memoria: " << ba.what() << "\n";
-   }
-
-
-   primer_nodo->siguiente_nodo = nullptr;
-   primer_nodo->dato = dato_a_agregar;
-   cantidad_nodos++;
 }
+
+//-----------------------------------------------------------------------------
+
 
 template <class Tipo> 
 ayed::Pila<Tipo>::Pila() {
@@ -245,14 +241,8 @@ ayed::Pila<Tipo>::Pila() {
 template <class Tipo> 
 ayed::Pila<Tipo>::~Pila() {
 
-   Nodo<Tipo>* indice_nodo = primer_nodo;
-
-   while (indice_nodo != nullptr) {
-      Nodo<Tipo>* nodo_a_borrar;
-      nodo_a_borrar = indice_nodo;
-      indice_nodo = indice_nodo->siguiente_nodo;
-      Tipo contenido_previo = nodo_a_borrar->dato;
-      delete nodo_a_borrar;
+   while (primer_nodo != nullptr) {
+      pop();
       std::cout << "\nNodo de pila borrado desde el destructor";
    }
 }
@@ -263,7 +253,7 @@ ayed::Pila<Tipo>::~Pila() {
 
 
 template <class Tipo>
-void ayed::Pila<Tipo>::push(Tipo dato_a_agregar) {
+void ayed::Pila<Tipo>::push(const Tipo &dato_a_agregar) {
 
 
    Nodo<Tipo>* nodo_nuevo;
@@ -349,6 +339,7 @@ unsigned ayed::Pila<Tipo>::get_tamanio () {
 
 
 //-----------------------------------------------------------------------------
+//--- COLA --------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
 
@@ -359,10 +350,10 @@ namespace ayed {
 
 	public:
 
-	        Cola(Tipo dato_a_agregar);
+	        Cola(const Tipo &dato_a_agregar);
 	        Cola();
 
-		void queue(Tipo dato_a_agregar);
+		void queue(const Tipo &dato_a_agregar);
          	Tipo unqueue();
 		Tipo frente();  
 		bool is_vacia();
@@ -381,8 +372,11 @@ namespace ayed {
 
 
 template <class Tipo> 
-ayed::Cola<Tipo>::Cola(Tipo dato_a_agregar) {
+ayed::Cola<Tipo>::Cola(const Tipo &dato_a_agregar) {
 
+   queue(dato_a_agregar);
+
+/*
    try  {
       primer_nodo = new Nodo<Tipo>;
    }
@@ -395,6 +389,7 @@ ayed::Cola<Tipo>::Cola(Tipo dato_a_agregar) {
    primer_nodo->siguiente_nodo = nullptr;
    primer_nodo->dato = dato_a_agregar;
    cantidad_nodos++;
+*/
 }
 
 template <class Tipo> 
@@ -423,7 +418,7 @@ ayed::Cola<Tipo>::~Cola() {
 //-----------------------------------------------------------------------------
 
 template <class Tipo>
-void ayed::Cola<Tipo>::queue(Tipo dato_a_agregar) {
+void ayed::Cola<Tipo>::queue(const Tipo &dato_a_agregar) {
 
 
    Nodo<Tipo>* nodo_nuevo;
@@ -510,63 +505,3 @@ Tipo ayed::Cola<Tipo>::frente() {
 
 
 
-/*--- VERSIONES CONTIGUAS ---*/
-
-
-
-template <class Tipo> 
-class Lista_Enlazada_cont {
-
-	public:
-
-	        Lista_Enlazada(unsigned cantidad_total);
-
-		void agregar_al_final(Tipo dato_a_agregar);
-		void agregar_en(Tipo dato_a_agregar, unsigned posicion);   
-         	void set_nodo(Tipo dato_a_agregar, unsigned numero_del_nodo);
-		void borrar_nodo (unsigned numero_del_nodo); 	
-		Tipo get_dato_nodo (unsigned numero_del_nodo);
-		unsigned get_tamanio();
-		bool is_vacia();                	
-
-	        ~Lista_Enlazada();
- 
-	private: 
-
-		Nodo<Tipo>* primer_nodo = nullptr;
-	        unsigned cantidad_nodos = 0;
-		
-		
- };
-
-
-
-template <class Tipo> 
-ayed::Lista_Enlazada<Tipo>::Lista_Enlazada(unsigned cantidad_total) {
-
-   try  {
-      primer_nodo = new Nodo<Tipo>[cantidad_total];
-   }
-
-   catch (std::bad_alloc& ba) {
-      std::cerr << "Error en reserva de memoria: " << ba.what() << "\n";
-   }
-
-   cantidad_nodos = cantidad_total;
-}
-
-//------------------------------
-
-template <class Tipo> 
-ayed::Lista_Enlazada<Tipo>::Lista_Enlazada(unsigned cantidad_total) {
-
-   try  {
-      primer_nodo = new Nodo<Tipo>[cantidad_total];
-   }
-
-   catch (std::bad_alloc& ba) {
-      std::cerr << "Error en reserva de memoria: " << ba.what() << "\n";
-   }
-
-   cantidad_nodos = cantidad_total;
-}
